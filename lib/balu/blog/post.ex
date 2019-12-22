@@ -6,7 +6,7 @@ defmodule Balu.Blog.Post do
 
   schema "posts" do
     field :content, :string
-    field :published, :string
+    field :published, :boolean
     field :title, :string
     belongs_to(:category, Category)
     timestamps()
@@ -15,9 +15,9 @@ defmodule Balu.Blog.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :published])
-    |> validate_required([:title, :content, :published])
-    |> foreign_key_constraint(:category_id)
+    |> cast(attrs, [:title, :content, :published, :category_id])
+    |> validate_required([:title, :content, :published, :category_id])
+    |> foreign_key_constraint(:category_id, message: "Category not found!")
     |> unique_constraint(:title)
   end
 end
