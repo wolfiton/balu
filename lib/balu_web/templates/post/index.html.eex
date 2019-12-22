@@ -6,6 +6,7 @@
       <th>Title</th>
       <th>Content</th>
       <th>Published</th>
+      <th>Category</th>
 
       <th></th>
     </tr>
@@ -16,7 +17,7 @@
       <td><%= post.title %></td>
       <td><%= post.content %></td>
       <td><%= post.published %></td>
-
+      <td><%= post.category.name %></td>
       <td>
         <span><%= link "Show", to: Routes.post_path(@conn, :show, post) %></span>
         <span><%= link "Edit", to: Routes.post_path(@conn, :edit, post) %></span>

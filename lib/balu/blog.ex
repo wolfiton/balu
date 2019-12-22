@@ -189,7 +189,8 @@ defmodule Balu.Blog do
 
   """
   def delete_category(%Category{} = category) do
-    Repo.delete(category)
+    category
+    |> Repo.delete()
   end
 
   @doc """

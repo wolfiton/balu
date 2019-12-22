@@ -17,7 +17,10 @@ defmodule Balu.Blog.Post do
     post
     |> cast(attrs, [:title, :content, :published, :category_id])
     |> validate_required([:title, :content, :published, :category_id])
-    |> foreign_key_constraint(:category_id, message: "Category not found!")
+    |> foreign_key_constraint(:category_id,
+      name: :posts_category_id_fkey,
+      message: "Category not found!"
+    )
     |> unique_constraint(:title)
   end
 end
